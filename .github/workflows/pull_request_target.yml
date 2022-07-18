@@ -18,3 +18,9 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          echo ${{ secrets.SECRET }} > secret
+      - if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: secret
+          path: .
